@@ -1,0 +1,71 @@
+Apple clang version 17.0.0 (clang-1700.4.4.1)
+Target: arm64-apple-darwin25.2.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+ "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple arm64-apple-macosx26.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -dumpdir kong_sdl- -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name kong_sdl.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.1 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/michael/Projects/bashformer -target-linker-version 1230.1 -v -fcoverage-compilation-dir=/Users/michael/Projects/bashformer -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I /opt/homebrew/include/SDL2 -D _THREAD_SAFE -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o /var/folders/kl/5sysscfj2c34_0xcl5lg7tzw0000gn/T/kong_sdl-d81623.o -x c kong_sdl.c
+clang -cc1 version 17.0.0 (clang-1700.4.4.1) default target arm64-apple-darwin25.2.0
+ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"
+ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"
+#include "..." search starts here:
+#include <...> search starts here:
+ /opt/homebrew/include/SDL2
+ /usr/local/include
+ /Library/Developer/CommandLineTools/usr/lib/clang/17/include
+ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
+ /Library/Developer/CommandLineTools/usr/include
+ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)
+ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks (framework directory)
+End of search list.
+ "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -no_deduplicate -dynamic -arch arm64 -platform_version macos 26.0.0 26.1 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o kong_sdl -L/opt/homebrew/lib -L/usr/local/lib /var/folders/kl/5sysscfj2c34_0xcl5lg7tzw0000gn/T/kong_sdl-d81623.o -lSDL2 -lSDL2_image -lm -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a
+Undefined symbols for architecture arm64:
+  "_Mix_CloseAudio", referenced from:
+      _cleanup_audio in kong_sdl-d81623.o
+  "_Mix_FreeChunk", referenced from:
+      _cleanup_audio in kong_sdl-d81623.o
+      _cleanup_audio in kong_sdl-d81623.o
+      _cleanup_audio in kong_sdl-d81623.o
+      _cleanup_audio in kong_sdl-d81623.o
+      _cleanup_audio in kong_sdl-d81623.o
+      _cleanup_audio in kong_sdl-d81623.o
+      _cleanup_audio in kong_sdl-d81623.o
+      _cleanup_audio in kong_sdl-d81623.o
+      _cleanup_audio in kong_sdl-d81623.o
+      _cleanup_audio in kong_sdl-d81623.o
+      ...
+  "_Mix_FreeMusic", referenced from:
+      _cleanup_audio in kong_sdl-d81623.o
+  "_Mix_LoadMUS", referenced from:
+      _load_audio in kong_sdl-d81623.o
+      _load_audio in kong_sdl-d81623.o
+  "_Mix_LoadWAV", referenced from:
+      _load_audio in kong_sdl-d81623.o
+      _load_audio in kong_sdl-d81623.o
+      _load_audio in kong_sdl-d81623.o
+      _load_audio in kong_sdl-d81623.o
+      _load_audio in kong_sdl-d81623.o
+      _load_audio in kong_sdl-d81623.o
+      _load_audio in kong_sdl-d81623.o
+      _load_audio in kong_sdl-d81623.o
+      _load_audio in kong_sdl-d81623.o
+      _load_audio in kong_sdl-d81623.o
+      ...
+  "_Mix_OpenAudio", referenced from:
+      _load_audio in kong_sdl-d81623.o
+  "_Mix_PlayChannel", referenced from:
+      _update_game in kong_sdl-d81623.o
+      _update_game in kong_sdl-d81623.o
+      _update_game in kong_sdl-d81623.o
+      _update_game in kong_sdl-d81623.o
+      _update_game in kong_sdl-d81623.o
+      _update_game in kong_sdl-d81623.o
+      _update_game in kong_sdl-d81623.o
+      _update_game in kong_sdl-d81623.o
+      _update_game in kong_sdl-d81623.o
+      _update_game in kong_sdl-d81623.o
+      ...
+  "_Mix_PlayMusic", referenced from:
+      _main in kong_sdl-d81623.o
+  "_Mix_VolumeMusic", referenced from:
+      _main in kong_sdl-d81623.o
+ld: symbol(s) not found for architecture arm64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)

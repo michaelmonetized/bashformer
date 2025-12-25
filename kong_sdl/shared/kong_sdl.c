@@ -1,4 +1,4 @@
-// Simple Donkey Kong–style platformer in an SDL2 window.
+// Simple platformer game in an SDL2 window.
 // Controls (Vim-style):
 // - h / Left: move left
 // - l / Right / D: move right
@@ -13,9 +13,9 @@
 //   Ubuntu/Debian: sudo apt-get install libsdl2-mixer-dev
 //   Fedora: sudo dnf install SDL2_mixer-devel
 // Build example (on many distros):
-//   gcc kong_sdl.c -o kong_sdl $(sdl2-config --cflags --libs) -lSDL2_image -lSDL2_mixer -lm
+//   gcc platformer_sdl.c -o platformer_sdl $(sdl2-config --cflags --libs) -lSDL2_image -lSDL2_mixer -lm
 // or (with pkg-config):
-//   gcc kong_sdl.c -o kong_sdl `pkg-config --cflags --libs sdl2 SDL2_image SDL2_mixer` -lm
+//   gcc platformer_sdl.c -o platformer_sdl `pkg-config --cflags --libs sdl2 SDL2_image SDL2_mixer` -lm
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -41,7 +41,7 @@
 #define POWER_HEART    3  // power.png 1:1 (gives life)
 
 // --- Sprite sheet configuration ---------------------------------------------
-// Final asset path: ./kong.png (relative to working directory)
+// Final asset path: ./sprites.png (relative to working directory)
 //
 // Layout: 6 columns x 4 rows grid (no padding).
 // We detect the actual tile size from the texture, but
@@ -164,11 +164,11 @@ typedef struct {
 static Audio audio;
 
 typedef struct {
-    SDL_Texture *tex;        // kong.png
+    SDL_Texture *tex;        // sprites.png
     SDL_Texture *heroTex;   // hero.png
     SDL_Texture *powerTex;   // power.png
     SDL_Texture *baddiesTex; // baddies.png
-    SDL_Texture *bgTex;      // kong-bgs.jpg - single texture with 4 backgrounds
+    SDL_Texture *bgTex;      // backgrounds.jpg - single texture with 4 backgrounds
     int bgTileW;             // width of each background
     int bgTileH;             // height of each background
     int tileW;
@@ -186,7 +186,7 @@ typedef struct {
     SDL_Rect playerClimb1;
     SDL_Rect playerClimb2;
     SDL_Rect barrel;
-    SDL_Rect barrelBroken;   // kong.png 1:5
+    SDL_Rect barrelBroken;   // sprites.png 1:5
     SDL_Rect platform;
     SDL_Rect ladder;
     SDL_Rect goal;
@@ -285,10 +285,10 @@ static SDL_Rect sprite_tile_custom(int tileW, int tileH, int tx, int ty) {
 }
 
 static int load_sprites(SDL_Renderer *renderer, Sprites *s) {
-    // Load kong.png
-    SDL_Texture *tex = IMG_LoadTexture(renderer, "kong.png");
+    // Load sprites.png
+    SDL_Texture *tex = IMG_LoadTexture(renderer, "sprites.png");
     if (!tex) {
-        fprintf(stderr, "IMG_LoadTexture(kong.png) failed: %s\n", IMG_GetError());
+        fprintf(stderr, "IMG_LoadTexture(sprites.png) failed: %s\n", IMG_GetError());
         return -1;
     }
     s->tex = tex;
@@ -302,14 +302,14 @@ static int load_sprites(SDL_Renderer *renderer, Sprites *s) {
     s->tileW = tw / 6;
     s->tileH = th / 4;
     if (s->tileW <= 0 || s->tileH <= 0) {
-        fprintf(stderr, "Invalid tile size from kong.png: %dx%d\n", s->tileW, s->tileH);
+        fprintf(stderr, "Invalid tile size from sprites.png: %dx%d\n", s->tileW, s->tileH);
         return -1;
     }
-    printf("Loaded kong.png: %dx%d, tile %dx%d\n", tw, th, s->tileW, s->tileH);
+    printf("Loaded sprites.png: %dx%d, tile %dx%d\n", tw, th, s->tileW, s->tileH);
     fflush(stdout);
 
     // Map to your described layout:
-    // Hero (from kong.png - will be replaced by hero.png when powered up)
+    // Hero (from sprites.png - will be replaced by hero.png when powered up)
     s->playerIdle   = sprite_tile(s, 0, 0); // first run frame as idle
     s->playerRun1   = sprite_tile(s, 1, 0);
     s->playerRun2   = sprite_tile(s, 2, 0);
@@ -319,7 +319,7 @@ static int load_sprites(SDL_Renderer *renderer, Sprites *s) {
 
     // Barrels
     s->barrel       = sprite_tile(s, 2, 1); // first roll frame
-    s->barrelBroken = sprite_tile(s, 5, 1); // broken barrel (kong.png column 5, row 1)
+    s->barrelBroken = sprite_tile(s, 5, 1); // broken barrel (sprites.png column 5, row 1)
 
     // World tiles
     s->ladder       = sprite_tile(s, 0, 2);
@@ -392,10 +392,10 @@ static int load_sprites(SDL_Renderer *renderer, Sprites *s) {
     printf("Loaded baddies.jpg: %dx%d, tile %dx%d\n", btw, bth, s->baddieTileW, s->baddieTileH);
     fflush(stdout);
 
-    // Load backgrounds (single file kong-bgs.jpg with 4 backgrounds in 2x2 grid)
-    s->bgTex = IMG_LoadTexture(renderer, "kong-bgs.jpg");
+    // Load backgrounds (single file backgrounds.jpg with 4 backgrounds in 2x2 grid)
+    s->bgTex = IMG_LoadTexture(renderer, "backgrounds.jpg");
     if (!s->bgTex) {
-        fprintf(stderr, "Warning: Could not load kong-bgs.jpg: %s\n", IMG_GetError());
+        fprintf(stderr, "Warning: Could not load backgrounds.jpg: %s\n", IMG_GetError());
         s->bgTex = NULL; // Background is optional
     } else {
         int bgw = 0, bgh = 0;
@@ -407,7 +407,7 @@ static int load_sprites(SDL_Renderer *renderer, Sprites *s) {
             // Assume 2x2 grid layout (4 backgrounds)
             s->bgTileW = bgw / 2;
             s->bgTileH = bgh / 2;
-            printf("Loaded kong-bgs.jpg: %dx%d, each bg %dx%d\n", bgw, bgh, s->bgTileW, s->bgTileH);
+            printf("Loaded backgrounds.jpg: %dx%d, each bg %dx%d\n", bgw, bgh, s->bgTileW, s->bgTileH);
             fflush(stdout);
         }
     }
@@ -1717,7 +1717,7 @@ static void render_game(SDL_Renderer *renderer, const Game *g, const Sprites *s)
     }
 
     // Player: choose frame and flip based on movement and power state
-    SDL_Texture *heroTexture = s->tex; // Default to kong.png
+    SDL_Texture *heroTexture = s->tex; // Default to sprites.png
     int heroRow = 0; // Default row
     int heroCol = 0; // Column based on animation
     
@@ -1761,7 +1761,7 @@ static void render_game(SDL_Renderer *renderer, const Game *g, const Sprites *s)
         // Use hero.png
         playerSrc = sprite_tile_custom(s->heroTileW, s->heroTileH, heroCol, heroRow);
     } else {
-        // Use kong.png (original sprites)
+        // Use sprites.png (original sprites)
         playerSrc = sprite_tile(s, heroCol, heroRow);
     }
     
@@ -1923,7 +1923,7 @@ int main(int argc, char **argv) {
     }
 
     SDL_Window *window = SDL_CreateWindow(
-        "Mini Kong",
+        "Platformer",
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
         WINDOW_W, WINDOW_H,
         SDL_WINDOW_SHOWN
