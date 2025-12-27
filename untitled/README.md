@@ -1,4 +1,38 @@
+# Sonny's Shining
+
 All game characters are inspired by celebs from the silent-film, talkies, and vaudeville film era.
+
+## Summary
+
+New Year's Eve. Confetti in the air. Her hand in yours.
+
+You're Sonny—pro bowler, tournament hopeful, and tonight, the luckiest guy at Bertie's Bustling Bubbles. Lucy's laughing at your jokes. The champagne's flowing. Midnight's coming and everything's perfect.
+
+Then the bartender whispers something in her ear.
+
+And she's gone.
+
+One door. One giggle. One glimpse of Kewpie's bowling-pin limo pulling away.
+
+Now the glasses aren't for toasting anymore. The city's got teeth. And everyone between you and Lucy is on his payroll.
+
+She keeps running. You keep following.
+
+Can you win her back?
+
+---
+
+A love letter to classic side-scrolling beat-em-ups and the golden age of cinema's strangest stars.
+
+**FEATURES:**
+
+- 8 brutal levels + bonus chase stage
+
+- Bowling-themed combat system
+
+- Epic, visceral boss finishers
+
+- An ending you probably earned
 
 ## Cast, setting, inspiration:
 
@@ -104,4 +138,12 @@ Sonny gets to Kewpie in the mechanical room and we go to street fighter game pla
 
 Sonny, seeing red ends the encounter with his ball launcher, insterting it into Kewpie in the most brutal way imagineable switching it to auto mode and holding down the trigger filling Kewpie with bowling balls till he inflates to the size of an elephant and ultimately explodes.
 
-Lucy witnesses the whole brutal mess as she watches in terror from a balcony above and when it's all over she runs away sobbing uncontrollably. Sonny chases after going through room after room filled with sadistic toys and masochistic furnishings.
+Lucy witnesses the whole brutal mess as she watches in terror from a balcony above and when it's all over she runs away sobbing uncontrollably.
+
+Sonny chases her going through room after room filled with sadistic toys and masochistic furnishings.
+
+His pursiut of Lucy gets slower and slower as he continues through this labrynth of kink.
+
+He finally reaches the back door, exits expecting to see the apple of his eye waiting for him, instead he finds her riding off into the distance alone on a small single engine fishing boat sobs fading off into the wind.
+
+The End.
