@@ -15,6 +15,11 @@ MAX_FALL=7
 
 VW=64
 VH=20
+MIN_VW=30
+MIN_VH=10
+SPAWN_SEARCH_RATIO=4    # search first 1/N of map width for spawn point
+SPAWN_FALLBACK_X=2
+SPAWN_FALLBACK_Y_OFFSET=3  # MAP_H - this = fallback spawn Y
 
 # Nerd Font sprites (edit to taste)
 SPR_PLAYER=""
@@ -66,8 +71,8 @@ term_resize() {
   rows=$(tput lines 2>/dev/null || echo 24)
   (( VW > cols )) && VW=$cols
   (( VH > rows-1 )) && VH=$((rows-1))
-  (( VH < 10 )) && VH=10
-  (( VW < 30 )) && VW=30
+  (( VH < MIN_VH )) && VH=$MIN_VH
+  (( VW < MIN_VW )) && VW=$MIN_VW
 }
 
 mapfile -t LINES <<<"$LEVEL"
@@ -154,7 +159,7 @@ won=0
 
 # spawn finder
 for ((y=1; y<MAP_H-1; y++)); do
-  for ((x=1; x<MAP_W/4; x++)); do
+  for ((x=1; x<MAP_W/SPAWN_SEARCH_RATIO; x++)); do
     t=$(tile_at "$x" "$y")
     b=$(tile_at "$x" $((y+1)))
     if [[ "$t" != "#" && "$t" != "^" ]] && is_solid "$b"; then
@@ -167,9 +172,9 @@ done
 die() {
   ((deaths++))
   vx=0; vy=0
-  px=2; py=$((MAP_H-3))
+  px=$SPAWN_FALLBACK_X; py=$((MAP_H-SPAWN_FALLBACK_Y_OFFSET))
   for ((y=1; y<MAP_H-1; y++)); do
-    for ((x=1; x<MAP_W/4; x++)); do
+    for ((x=1; x<MAP_W/SPAWN_SEARCH_RATIO; x++)); do
       t=$(tile_at "$x" "$y")
       b=$(tile_at "$x" $((y+1)))
       if [[ "$t" != "#" && "$t" != "^" ]] && is_solid "$b"; then
