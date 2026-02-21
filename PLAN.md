@@ -2,85 +2,80 @@
 
 ## Project Overview
 
-Bashformer is a terminal-based platformer game built with React and Ink, running on Bun. It features smooth 60 FPS gameplay, physics-based movement, collectible coins, deadly spikes, and a goal-based win condition. The game represents a significant improvement over its original Bash version with better performance, type safety, and state management.
+Bashformer is a terminal-based Flappy Bird-style game built with React and Ink, running on Bun. It features smooth 30 FPS gameplay, physics-based flap/gravity mechanics, pipe obstacles, and score tracking. The project also includes experimental C-based terminal games (cflap, ctetris, cdraw, cbreakout, cdaw).
 
 ## Current State
 
-- **Version**: Early development (no version specified)
+- **Version**: Early development
 - **Tech Stack**: React 19, Ink 6.5, Bun, TypeScript
 - **Features Implemented**:
-  - 60 FPS game loop
-  - Physics-based movement with gravity
+  - 30 FPS game loop
+  - Physics-based flap/gravity movement
+  - Pipe obstacle generation and scrolling
   - Collision detection
-  - Game elements (player, walls, spikes, coins, goal)
-  - Death counter tracking
-  - Keyboard controls (WASD, arrows, space)
-- **Status**: Playable single-level prototype
+  - Score tracking
+  - Keyboard controls (space/up to flap)
+  - Terminal-responsive sizing
+- **Status**: Playable prototype
 
 ## Phase 1: Core Game Polish (2-3 weeks)
 
 ### Goals
-- [ ] Add multiple levels with increasing difficulty
-- [ ] Implement level progression system
-- [ ] Add persistent high score/best time tracking
-- [ ] Create level select menu
-- [ ] Add sound effects (terminal beeps/audio)
-- [ ] Implement pause functionality
-- [ ] Add restart level option without full game restart
+- [ ] Add difficulty scaling (pipes get tighter/faster over time)
+- [ ] Implement persistent high score tracking (file-based)
+- [ ] Add start screen / game over screen with stats
+- [ ] Add sound effects (terminal beeps)
+- [ ] Improve visual polish (colors, pipe sprites, ground animation)
+- [ ] Add pause functionality
 
 ### Success Criteria
-- 5+ playable levels
-- Scores persist between sessions
-- Clean menu navigation
+- High scores persist between sessions
+- Clean start/game-over flow
+- Increasing difficulty curve
 
 ## Phase 2: Game Features (3-4 weeks)
 
 ### Goals
-- [ ] Add moving platforms
-- [ ] Implement enemy characters with AI patterns
-- [ ] Add power-ups (double jump, invincibility, speed boost)
-- [ ] Create checkpoints system
-- [ ] Add timer-based challenges
-- [ ] Implement level editor mode
-- [ ] Add different character skins/themes
+- [ ] Add day/night visual themes
+- [ ] Implement different bird skins/characters
+- [ ] Add power-ups (slow-mo, shield, magnet coins)
+- [ ] Create coin collectibles between pipes
+- [ ] Add achievement system
+- [ ] Multiple game modes (classic, timed, zen/no-death)
 
 ### Success Criteria
-- 3+ enemy types
-- 3+ power-up types
-- Functional level editor
+- 3+ game modes
+- 2+ power-up types
+- Achievement tracking
 
 ## Phase 3: Distribution & Community (2-3 weeks)
 
 ### Goals
-- [ ] Package as npm installable CLI game
-- [ ] Add multiplayer/shared high score leaderboard
-- [ ] Create community level sharing system
-- [ ] Write comprehensive documentation
+- [ ] Package as npm installable CLI game (`npx bashformer`)
+- [ ] Add global leaderboard (simple server or GitHub Gist-based)
+- [ ] Write comprehensive README with GIFs
 - [ ] Add accessibility options (colorblind modes, reduced motion)
-- [ ] Implement achievement system
-- [ ] Create speedrun mode with global leaderboard
+- [ ] Publish C variants as separate packages
 
 ### Success Criteria
 - Published to npm
 - 100+ downloads
-- Community-contributed levels
+- README with gameplay GIFs
 
 ## Success Metrics
 
 | Metric | Target |
 |--------|--------|
-| Levels | 15+ |
+| Game Modes | 3+ |
 | npm Downloads | 500+ |
 | GitHub Stars | 50+ |
-| Community Levels | 10+ |
-| Frame Rate | Consistent 60 FPS |
+| Frame Rate | Consistent 30 FPS |
 
-## Timeline Summary
+## C Experiments
 
-| Phase | Duration | Focus |
-|-------|----------|-------|
-| Phase 1 | Weeks 1-3 | Core polish & levels |
-| Phase 2 | Weeks 4-7 | Advanced features |
-| Phase 3 | Weeks 8-10 | Distribution & community |
-
-**Total Estimated Time**: 10 weeks
+The repo also contains C-based terminal games:
+- **cflap** — Flappy Bird in C (ncurses)
+- **ctetris** — Tetris clone
+- **cdraw** — Terminal drawing tool
+- **cbreakout** — Breakout clone
+- **cdaw** — Digital audio workstation experiment
