@@ -5,9 +5,17 @@ import { useStdin } from 'ink';
 
 // --- Terminal size helpers -------------------------------------------------
 const getTerminalSize = () => {
-  const cols = process.stdout.columns || parseInt(process.env.COLUMNS || '80', 10);
-  const rows = process.stdout.rows || parseInt(process.env.LINES || '24', 10);
-  return { width: cols, height: rows };
+  try {
+    const cols = process.stdout.columns || parseInt(process.env.COLUMNS || '80', 10);
+    const rows = process.stdout.rows || parseInt(process.env.LINES || '24', 10);
+    if (cols < 40 || rows < 10) {
+      console.error('Terminal too small — need at least 40x10');
+      process.exit(1);
+    }
+    return { width: cols, height: rows };
+  } catch {
+    return { width: 80, height: 24 };
+  }
 };
 
 const term = getTerminalSize();
