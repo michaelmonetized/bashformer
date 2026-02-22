@@ -32,6 +32,7 @@ const GROUND_Y = CONFIG.VIEWPORT_HEIGHT - 2; // last row is status line
 interface Pipe {
   x: number;         // left edge
   gapY: number;      // center of the vertical gap
+  scored: boolean;    // whether the bird has passed this pipe
 }
 
 interface GameState {
@@ -139,7 +140,7 @@ function Game() {
       const moved: Pipe[] = [];
       for (const p of s.pipes) {
         const x = p.x - CONFIG.PIPE_SPEED;
-        if (x > -5) moved.push({ ...p, x });
+        if (x > -5) moved.push({ ...p, x, scored: p.scored ?? false });
       }
 
       // Spawn new pipe
@@ -150,7 +151,7 @@ function Game() {
         const minCenter = minTop + gapHalf;
         const maxCenter = maxBottom - gapHalf;
         const gapY = Math.floor(Math.random() * (maxCenter - minCenter + 1)) + minCenter;
-        moved.push({ x: CONFIG.VIEWPORT_WIDTH, gapY });
+        moved.push({ x: CONFIG.VIEWPORT_WIDTH, gapY, scored: false });
       }
 
       // Collisions + scoring
@@ -166,8 +167,9 @@ function Game() {
           }
         }
 
-        // Score when bird just passed the pipe
-        if (!s.gameOver && pipeRight === birdX - 1) {
+        // Score when bird passes the pipe (use scored flag to prevent double-counting)
+        if (!s.gameOver && !p.scored && pipeRight < birdX) {
+          p.scored = true;
           s.score += 1;
         }
       }
