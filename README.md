@@ -1,14 +1,14 @@
-# Bashformer - React/Ink Platformer Game
+# Bashformer - Terminal Flappy Bird
 
-A fast, smooth platformer game built with React and Ink for the terminal.
+A smooth Flappy Bird clone built with React and [Ink](https://github.com/vadimdemedes/ink) for the terminal.
 
 ## Features
 
-- Smooth 60 FPS gameplay
-- Physics-based movement with gravity
-- Collect coins, avoid spikes, reach the goal
-- Death counter tracking
-- Responsive controls
+- 30 FPS gameplay with smooth physics
+- Pipe obstacles with randomized gaps
+- Score tracking
+- Responsive terminal-size adaptation
+- Clean Unicode rendering (█ pipes, 🐦 bird, ═ ground)
 
 ## Installation
 
@@ -31,23 +31,15 @@ chmod +x index.tsx
 
 ## Controls
 
-- **A** or **←** - Move left
-- **D** or **→** - Move right  
-- **W**, **Space**, or **↑** - Jump
+- **Space** - Flap (start game / fly upward)
 - **Q** - Quit game
 
-## Game Elements
+## How It Works
 
-- 🧙 - Player
-- █ - Walls (solid blocks)
-- ^ - Spikes (deadly!)
-- 🪙 - Coins (collect them!)
-- 🏁 - Goal (reach to win!)
+Navigate the bird through gaps between pipes. Each pipe passed scores a point. Hit a pipe or the ground and it's game over. Press Space to restart.
 
-## Improvements over Bash Version
+## Tech
 
-- **Much faster**: Runs at 60 FPS vs 30 FPS
-- **Smoother**: Better frame timing and rendering
-- **Less buggy**: Proper state management and collision detection
-- **Better input handling**: More responsive controls
-- **Type-safe**: Written in TypeScript
+- **Runtime:** Bun
+- **UI:** React + Ink (terminal rendering)
+- **Language:** TypeScript
