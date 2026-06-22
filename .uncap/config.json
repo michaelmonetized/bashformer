@@ -1,0 +1,19 @@
+{
+  "repoId": "r17899gb5zd9wppd1x1xvy1xyx87mdn6",
+  "owner": "uncap_user",
+  "name": "bashformer",
+  "originType": "native",
+  "legacy": {
+    "hasGitHub": false,
+    "hasGit": true
+  },
+  "defaults": {
+    "file": "public",
+    "fragment": "public",
+    "issue": "public",
+    "pullRequest": "public",
+    "branch": "public",
+    "comment": "public"
+  },
+  "headSha": ""
+}
