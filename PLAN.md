@@ -2,12 +2,14 @@
 
 ## Project Overview
 
-Bashformer is a terminal-based Flappy Bird-style game built with React and Ink, running on Bun. It features smooth 30 FPS gameplay, physics-based flap/gravity mechanics, pipe obstacles, and score tracking. The project also includes experimental C-based terminal games (cflap, ctetris, cdraw, cbreakout, cdaw).
+Bashformer is a terminal-based Flappy Bird-style game built with React and Ink, running on Bun. Smooth 30 FPS gameplay, physics-based flap/gravity, pipe obstacles, and score tracking.
+
+**HEAD note (Feb 2026 cleanup):** Experimental C/SDL trees (`vex_sdl`, cflap, ctetris, cdraw, cbreakout, cdaw) were **removed** from this repo. Do not plan distribution of C variants from this tree.
 
 ## Current State
 
-- **Version**: Early development
-- **Tech Stack**: React 19, Ink 6.5, Bun, TypeScript
+- **Tech Stack**: React 19, Ink, Bun, TypeScript
+- **Status**: Playable Ink prototype (unreleased)
 - **Features Implemented**:
   - 30 FPS game loop
   - Physics-based flap/gravity movement
@@ -16,9 +18,8 @@ Bashformer is a terminal-based Flappy Bird-style game built with React and Ink, 
   - Score tracking
   - Keyboard controls (space/up to flap)
   - Terminal-responsive sizing
-- **Status**: Playable prototype
 
-## Phase 1: Core Game Polish (2-3 weeks)
+## Phase 1: Core Game Polish (open)
 
 ### Goals
 - [ ] Add difficulty scaling (pipes get tighter/faster over time)
@@ -33,7 +34,7 @@ Bashformer is a terminal-based Flappy Bird-style game built with React and Ink, 
 - Clean start/game-over flow
 - Increasing difficulty curve
 
-## Phase 2: Game Features (3-4 weeks)
+## Phase 2: Game Features
 
 ### Goals
 - [ ] Add day/night visual themes
@@ -43,23 +44,16 @@ Bashformer is a terminal-based Flappy Bird-style game built with React and Ink, 
 - [ ] Add achievement system
 - [ ] Multiple game modes (classic, timed, zen/no-death)
 
-### Success Criteria
-- 3+ game modes
-- 2+ power-up types
-- Achievement tracking
-
-## Phase 3: Distribution & Community (2-3 weeks)
+## Phase 3: Distribution & Community
 
 ### Goals
-- [ ] Package as npm installable CLI game (`npx bashformer`)
+- [ ] Package as npm/bun installable CLI game (`npx bashformer` / `bunx bashformer`)
 - [ ] Add global leaderboard (simple server or GitHub Gist-based)
 - [ ] Write comprehensive README with GIFs
 - [ ] Add accessibility options (colorblind modes, reduced motion)
-- [ ] Publish C variants as separate packages
 
 ### Success Criteria
-- Published to npm
-- 100+ downloads
+- Published to a package registry
 - README with gameplay GIFs
 
 ## Success Metrics
@@ -67,15 +61,8 @@ Bashformer is a terminal-based Flappy Bird-style game built with React and Ink, 
 | Metric | Target |
 |--------|--------|
 | Game Modes | 3+ |
-| npm Downloads | 500+ |
+| Package Downloads | 500+ |
 | GitHub Stars | 50+ |
 | Frame Rate | Consistent 30 FPS |
 
-## C Experiments
-
-The repo also contains C-based terminal games:
-- **cflap** — Flappy Bird in C (ncurses)
-- **ctetris** — Tetris clone
-- **cdraw** — Terminal drawing tool
-- **cbreakout** — Breakout clone
-- **cdaw** — Digital audio workstation experiment
+*PLAN parity sync: 2026-09-08 — removed deleted C/SDL experiment claims.*
